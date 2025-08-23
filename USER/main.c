@@ -1,6 +1,7 @@
 #include "sys.h"
 #include "delay.h"
 #include "usart.h"
+#include "beep.h" 
 /************************************************
  ALIENTEK 精英板STM32F103开发板实验0-1
  Template工程模板-新建工程章节使用-HAL库版本
@@ -40,14 +41,19 @@ int main(void)
 
 	GPIO_Initure.Pin=GPIO_PIN_5; 				//PE5
 	HAL_GPIO_Init(GPIOE,&GPIO_Initure);
+
+	BEEP_init();
 	
 	while(1)
 	{
 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_SET);		//PB5置1 
-		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_5,GPIO_PIN_SET);		//PE5置1  			
+		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_5,GPIO_PIN_SET);		//PE5置1
+
+		BEEP=1;
 		Delay(0x7FFFFF);
 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_RESET);		//PB5置0
-		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_5,GPIO_PIN_RESET);		//PE5置0  
+		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_5,GPIO_PIN_RESET);		//PE5置0 
+		BEEP=0;
 		Delay(0x7FFFFF);
 	}
 }
