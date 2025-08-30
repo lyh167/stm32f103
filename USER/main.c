@@ -28,7 +28,7 @@ void Delay(__IO uint32_t nCount)
 
 int main(void)
 {
-	u8 key;
+	//u8 key;
     HAL_Init();                    	 			//初始化HAL库    
     Stm32_Clock_Init(RCC_PLL_MUL9);   			//设置时钟,72M
 #if BEEP_TEST
@@ -74,5 +74,14 @@ int main(void)
 		}
 	}
 #endif
+
+#if USART_TEST
+	USART_init(115200);
 	
+	while(1){
+		printf("Hello World\r\n");
+		Delay(0x7FFFFF);
+	}
+#endif
+
 }

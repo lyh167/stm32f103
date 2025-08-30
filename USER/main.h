@@ -26,7 +26,8 @@
 
 #define BEEP_TEST   0
 #define LED_TEST    0
-#define KEY_TEST    1
+#define KEY_TEST    0
+#define USART_TEST  1
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
